@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="margin: 0;">
+<canvas id="canvas" width="800" height="400"></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var ratio = window.devicePixelRatio || 1;
+
+    var width = 960;
+    var height = 301;
+
+    canvas.setAttribute('width', width * ratio);
+    canvas.setAttribute('height', height * ratio);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    if (ratio !== 1) {
+        ctx.scale(ratio, ratio);
+    }
+
+    ctx.strokeStyle = '#000000';
+    ctx.fillStyle = '#ff0000';
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = '#ffffff';
+
+    ctx.save();
+    ctx.fillRect(0, 0, 910, 270);
+
+    ctx.beginPath();
+    ctx.rect(0, 0, 910, 270);
+    ctx.clip();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 100.5);
+    ctx.lineTo(1000, 100.5);
+    ctx.stroke();
+</script>
+</body>
+</html>
